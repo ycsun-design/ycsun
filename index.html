@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YC SUN｜Portfolio</title>
+  <style>
+    :root {
+      --primary: #F5D25F;
+      /* 黃 */
+      --accent: #F5AFC1;
+      /* 粉 */
+      --blue: rgb(150, 208, 226);
+      /* 按鈕原始色 */
+      --blue-hover: rgb(0, 141, 185);
+      /* Hover色 */
+      --muted: #757468;
+      --bg: #fcf0cb;
+      /* 若需要背景色可開啟，目前設為白/灰系 */
+      --focus-bg: rgb(229, 229, 229);
+      /* Header 高度變數，用於計算捲動位置 */
+      --header-height: 80px;
+    }
+
+    /* 基礎設定 */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      /* 加入 Scroll Snap 效果，讓滑動有分區感 */
+      scroll-snap-type: y proximity;
+      scroll-padding-top: var(--header-height);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Helvetica Neue", Arial, sans-serif;
+      background: #fcfcfc;
+      color: var(--muted);
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Wrap */
+    #wrap {
+      width: 100%;
+      overflow-x: hidden;
+      /* 防止橫向卷軸 */
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      background: linear-gradient(180deg, #dff6fb 0%, rgba(255, 255, 255, 0.95) 80%);
+      z-index: 999;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+    }
+
+    .header-inner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #111;
+      font-size: 1.1rem;
+    }
+
+    .nav-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-link {
+      margin-left: 18px;
+      padding: 6px 2px;
+      font-weight: 600;
+      transition: transform .18s, color .18s;
+      font-size: 0.9rem;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-3px);
+      color: var(--blue-hover);
+    }
+
+    .socials,
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+      margin-left: 12px;
+      align-items: center;
+    }
+
+    .icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.5);
+      transition: background .18s, transform .12s;
+      color: #555;
+    }
+
+    .icon-link:hover {
+      background: rgba(0, 0, 0, 0.06);
+      transform: translateY(-3px);
+      color: #000;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 140px 0 80px;
+      /* Top padding 因應 fixed header */
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      min-height: 80vh;
+    }
+
+    .hero-left {
+      flex: 0 0 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      background-color: #ddd;
+      /* 預備色 */
+    }
+
+    .sub {
+      margin-top: 18px;
+      font-size: .95rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .hero-right {
+      flex: 1;
+      position: relative;
+      padding-right: 40px;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: 6px;
+      margin-bottom: 12px;
+      color: #111;
+    }
+
+    .hero-lead {
+      max-width: 520px;
+      margin-top: 0;
+      margin-bottom: 10px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .hero-slogan {
+      font-size: 1.4rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+      display: inline-block;
+      position: relative;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .hero-slogan .underline {
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      height: 26px;
+      width: 100%;
+      background: linear-gradient(90deg, rgba(245, 210, 95, 0.85) 0%, rgba(245, 210, 95, 0.85) 100%);
+      z-index: -1;
+      opacity: 0.8;
+      clip-path: polygon(0 10%, 100% 0, 98% 100%, 2% 90%);
+    }
+
+    .star {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+      opacity: 0;
+      animation: star-flicker 2.6s linear infinite;
+    }
+
+    .star.s1 {
+      left: 18%;
+      bottom: 6px;
+      animation-delay: .2s;
+    }
+
+    .star.s2 {
+      left: 40%;
+      bottom: 8px;
+      animation-delay: .6s;
+    }
+
+    .star.s3 {
+      left: 62%;
+      bottom: 10px;
+      animation-delay: 1s;
+    }
+
+    @keyframes star-flicker {
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scale(.5);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    .btns {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 26px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+      min-width: 160px;
+      text-align: center;
+      transition: background .18s, transform .12s;
+      box-shadow: 0 6px 18px rgba(0, 141, 185, 0.15);
+    }
+
+    .btn:hover {
+      background: var(--blue-hover);
+      transform: translateY(-3px);
+    }
+
+    /* Section 通用 */
+    .section {
+      padding: 80px 0;
+    }
+
+    .section h2 {
+      margin: 0 0 8px 0;
+      font-size: 1.8rem;
+      color: #111;
+      letter-spacing: 1px;
+    }
+
+    .section p {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* About / Focus */
+    .focus-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .focus {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+      background: var(--focus-bg);
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    .about-text {
+      padding-top: 10px;
+    }
+
+    .about-text h3 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    /* Accordion */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .acc-item {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: background .25s;
+    }
+
+    .acc-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      cursor: pointer;
+      font-weight: 700;
+      color: #333;
+    }
+
+    .toggle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #999;
+      transition: 0.3s;
+    }
+
+    .acc-body {
+      /* max-height 設大一點，避免文字消失 */
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      background: #fafafa;
+      padding: 0 20px;
+      color: #555;
+    }
+
+    .acc-item.open {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .acc-item.open .acc-top {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .acc-item.open .toggle {
+      background: #fff;
+      border-color: #fff;
+      color: var(--accent);
+      transform: rotate(45deg);
+      /* 變成 X */
+    }
+
+    .acc-item.open .acc-body {
+      /* 設定足夠大的高度，確保多行文字都能顯示 */
+      max-height: 1000px;
+      padding: 16px 20px;
+    }
+
+    /* Portfolio */
+    .portfolio-sub {
+      color: #666;
+      margin-top: 8px;
+    }
+
+    .portfolio-grid {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-top: 30px;
+    }
+
+    /* Portfolio 主圖區域 */
+    .portfolio-main {
+      flex: 1;
+      /* 設定固定視覺高度，避免切換圖片時跳動 */
+      height: 500px;
+      /* 【需求1】修正色偏：將背景改為淺灰色，取代原本的深灰色，避免圖片白邊看起來髒髒的 */
+      background: #f4f4f4; 
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .portfolio-main img {
+      width: 100%;
+      height: 100%;
+      /* 關鍵：使用 contain 讓圖片「完整呈現」且不變形 */
+      object-fit: contain;
+      display: block;
+    }
+
+    /* 主圖遮罩 */
+    .main-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      /* 漸層黑底，確保白字清楚 */
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%);
+      color: #fff;
+      pointer-events: none;
+      /* 讓滑鼠可以直接穿透點擊圖片(如果有lightbox) */
+    }
+
+    .meta-title {
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .meta-desc {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* Thumbs */
+    .portfolio-thumbs {
+      width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: 500px;
+      /* 與主圖同高 */
+      overflow-y: auto;
+      /* 若縮圖多可捲動 */
+    }
+
+    .thumb {
+      height: 80px;
+      background: #eee;
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .thumb:hover img {
+      transform: scale(1.1);
+    }
+
+    .thumb .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+      font-size: 0.9rem;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .thumb:hover .overlay {
+      opacity: 1;
+    }
+
+    /* Projects */
+    #projects {
+      /* 讓這整個大區塊內的子元素支援 scroll snap */
+    }
+
+    .project {
+      /* 每個專案高度至少佔 2/3 視窗高度 */
+      min-height: 66vh;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      padding: 40px 0;
+      border-bottom: 1px dashed #ddd;
+
+      /* Scroll Snap 對齊點 */
+      scroll-snap-align: start;
+      /* 預留 Header 高度，避免內容被遮住 */
+      scroll-margin-top: 90px;
+    }
+
+    .project:last-child {
+      border-bottom: none;
+    }
+
+    .carousel {
+      flex: 1;
+      /* 自適應寬度 */
+      max-width: 600px;
+      aspect-ratio: 16/9;
+      /* 維持比例 */
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #eee;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .slides {
+      display: flex;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .proj-meta {
+      flex: 1;
+      padding: 0 10px;
+    }
+
+    .proj-meta h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: #222;
+    }
+
+    .proj-text {
+      line-height: 1.8;
+      color: #555;
+      white-space: pre-line;
+      /* 支援換行符號 */
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.8);
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 2;
+      transition: background 0.2s;
+    }
+
+    .arrow:hover {
+      background: #fff;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+
+    /* Contact */
+    .contact-section {
+      position: relative;
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 100px 24px;
+    }
+
+    .contact-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('./images/contact-bg.jpg');
+      /* 請確認圖片路徑 */
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+    }
+
+    .contact-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-content h2 {
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      background: var(--primary);
+      color: #222;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+    }
+
+    .footer-center {
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-right .footer-socials {
+      justify-content: flex-end;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 20px;
+    }
+
+    .lightbox.show {
+      display: flex;
+    }
+
+    .lb-content {
+      max-width: 1000px;
+      width: 100%;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      /* 手機優先 */
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .lb-content {
+        flex-direction: row;
+      }
+    }
+
+    .lb-image {
+      flex: 2;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lb-image img {
+      max-width: 100%;
+      max-height: 80vh;
+      display: block;
+    }
+
+    .lb-meta {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      z-index: 10;
+    }
+
+    .lb-prev,
+    .lb-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .lb-prev:hover,
+    .lb-next:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .lb-prev {
+      left: 10px;
+    }
+
+    .lb-next {
+      right: 10px;
+    }
+
+    /* RWD 響應式調整 */
+    @media (max-width: 960px) {
+      .hero {
+        flex-direction: column;
+        padding-top: 120px;
+        text-align: center;
+      }
+
+      .btns {
+        justify-content: center;
+      }
+
+      .focus {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-grid {
+        flex-direction: column;
+      }
+
+      .portfolio-main {
+        width: 100%;
+        height: 320px;
+      }
+
+      /* 手機版高度 */
+      .portfolio-thumbs {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        height: auto;
+        padding-bottom: 10px;
+      }
+
+      .thumb {
+        width: 120px;
+        height: 80px;
+        flex-shrink: 0;
+      }
+
+      .project {
+        flex-direction: column;
+        text-align: left;
+      }
+
+      .project:nth-child(even) {
+        flex-direction: column;
+      }
+
+      /* 取消左右交錯 */
+      .carousel {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .footer-right .footer-socials {
+        justify-content: center;
+      }
+
+      .footer-left,
+      .footer-right {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <header>
+      <div class="wrap header-inner">
+        <div class="left">
+          <div class="logo">SUN YI CHING</div>
+        </div>
+
+        <nav class="nav-area">
+          <a class="nav-link" href="#about">ABOUT</a>
+          <a class="nav-link" href="#portfolio">PORTFOLIO</a>
+          <a class="nav-link" href="#projects">PROJECTS</a>
+
+          <div class="socials">
+            <a href="#" aria-label="facebook" class="icon-link">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
+                <path d="M18 2h-3a4 4 0 0 0-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 0 1 1-1h3z" stroke-width="1.2" />
+              </svg>
+            </a>
+            <a href="#" aria-label="instagram" class="icon-link">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke-width="1.2" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8" stroke-width="1.2" />
+              </svg>
+            </a>
+            <a href="mailto:ycsun@gmail.com" aria-label="mail" class="icon-link">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
+                <path d="M3 8l8.5 6L20 8" stroke-width="1.2" />
+                <rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke-width="1.2" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero wrap" id="home">
+        <div class="hero-left">
+          <div class="avatar" id="avatar" style="background-image:url(./images/avator.jpg);"></div>
+          <div class="sub">Marketing & Design & Project Strategy</div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-title">策略 × 設計 × 行銷</div>
+          <p class="hero-lead">從概念到執行，結合創意與邏輯，打造有影響力的內容，讓每個設計與策略都直達目標。</p>
+
+          <div class="hero-slogan">
+            讓創意在細節中發光
+            <span class="underline"></span>
+            <span class="star s1"></span>
+            <span class="star s2"></span>
+            <span class="star s3"></span>
+          </div>
+
+          <div class="btns">
+            <a class="btn" href="#about">More About Me</a>
+            <a class="btn" style="background:#fff; color:var(--blue); border:2px solid var(--blue);"
+              href="#projects">View Project</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section wrap">
+        <div class="focus-header">
+          <h2>FOCUS ON</h2>
+          <p style="color:#666">Let's make ideas visible</p>
+        </div>
+
+        <div class="focus">
+          <div class="about-text">
+            <h3>擅長專案統籌、跨部門協作，<br>結合行銷與視覺，落實策略執行</h3>
+          </div>
+
+          <div class="accordion">
+            <div class="acc-item">
+              <div class="acc-top">
+                <span>Strategy｜策略思維</span>
+                <div class="toggle">+</div>
+              </div>
+              <div class="acc-body">
+                <p>具專案管理背景，熟悉跨部門協作與資源整合，專注行銷策略與視覺呈現結合，創造有效溝通。</p>
+              </div>
+            </div>
+            <div class="acc-item">
+              <div class="acc-top">
+                <span>Design | 設計整合</span>
+                <div class="toggle">+</div>
+              </div>
+              <div class="acc-body">
+                <p>視覺傳達、出版設計與活動整合，將內容轉化為可視化成果，確保品牌一致性。</p>
+              </div>
+            </div>
+            <div class="acc-item">
+              <div class="acc-top">
+                <span>Brand Communication｜品牌溝通</span>
+                <div class="toggle">+</div>
+              </div>
+              <div class="acc-body">
+                <p>線上線下整合溝通、媒體協作與活動宣傳策略，建立長期品牌影響力。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="section wrap">
+        <div style="text-align:center; margin-bottom:20px">
+          <h2>Portfolio</h2>
+          <p class="portfolio-sub">整合策略與設計，讓行銷更有方向</p>
+        </div>
+
+        <div class="portfolio-grid">
+          <div class="portfolio-main" id="mainPreview">
+            <img id="mainImg" src="./images/Design Poster 封套扭曲_耳機.jpg" alt="main">
+            <div class="main-overlay">
+              <div class="meta">
+                <strong class="meta-title">海報設計 Poster Design</strong>
+                <div class="meta-desc">視覺敘事 × 行銷訊息設計</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-thumbs" id="thumbs">
+            <div class="thumb" data-src="./images/Design Poster 漸層_建商廣告.jpg" data-title="海報設計 Poster Design"
+              data-desc="視覺敘事 × 行銷訊息設計">
+              <img src="./images/Design Poster 漸層_建商廣告.jpg" alt="">
+              <div class="overlay">海報設計</div>
+            </div>
+            <div class="thumb" data-src="./images/Design Poster 封套扭曲_耳機.jpg" data-title="海報設計 Poster Design"
+              data-desc="視覺敘事 × 行銷訊息設計">
+              <img src="./images/Design Poster 封套扭曲_耳機.jpg" alt="">
+              <div class="overlay">海報設計</div>
+            </div>
+            <div class="thumb" data-src="./images/Design Poster 漸變-科峰會海報.png" data-title="科峰會海報" data-desc="科技感 × 資訊層級規劃">
+              <img src="./images/Design Poster 漸變-科峰會海報.png" alt="">
+              <div class="overlay">科峰會</div>
+            </div>
+            <div class="thumb" data-src="./images/Design Social Media茶葉.png" data-title="IG 社群版型"
+              data-desc="內容策略 × 品牌視覺一致性">
+              <img src="./images/Design Social Media茶葉.png" alt="">
+              <div class="overlay">IG 茶葉</div>
+            </div>
+            <div class="thumb" data-src="./images/Design YT教育-感官-YT縮圖.jpg" data-title="YouTube 縮圖設計"
+              data-desc="影像內容協作協調 × 視覺層級與焦點處理">
+              <img src="./images/Design YT教育-感官-YT縮圖.jpg" alt="">
+              <div class="overlay">YT 縮圖</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section wrap">
+        <div style="margin-bottom:30px">
+          <h2>PROJECTS</h2>
+          <p>透過多元專案經驗，探索從活動現場到品牌整合的各種可能。</p>
+        </div>
+
+        <article class="project">
+          <div class="carousel" data-idx="0">
+            <div class="slides">
+              <div class="slide" style="background-image:url('./images/p1 2022共融年會.jpg')"></div>
+              <div class="slide" style="background-image:url('./images/p1 唐團展覽.jpg')"></div>
+              <div class="slide" style="background-image:url('./images/P1 背靠背市場企劃.png')"></div>
+            </div>
+            <div class="arrow left">&lt;</div>
+            <div class="arrow right">&gt;</div>
+          </div>
+          <div class="proj-meta">
+            <h3>品牌行銷企劃 Brand & Marketing</h3>
+            <p class="proj-text">品牌整合視覺與行銷素材製作，結合活動執行與 KOL 內容合作，強化觀眾互動與品牌識別度。
+
+              負責範圍：策略規劃、活動執行、媒體協作。
+              包含：國際講座、品牌合作、內容策畫、公關曝光。</p>
+          </div>
+        </article>
+
+        <article class="project" style="flex-direction: row-reverse;">
+          <div class="carousel" data-idx="1">
+            <div class="slides">
+              <div class="slide" style="background-image:url('./images/P2 YTxP歪.png')"></div>
+              <div class="slide" style="background-image:url('./images/P2 鏡YT.png')"></div>
+              <div class="slide" style="background-image:url('./images/P2口述形象片.png')"></div>
+            </div>
+            <div class="arrow left">&lt;</div>
+            <div class="arrow right">&gt;</div>
+          </div>
+          <div class="proj-meta">
+            <h3>跨平台內容整合 Content Strategy</h3>
+            <p class="proj-text">結合內容策劃與視覺設計，整合節目製作、行銷、視覺設計及公關執行。
+
+              包含：YouTuber 合作、媒體頻道合作。</p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="carousel" data-idx="2">
+            <div class="slides">
+              <div class="slide" style="background-image:url('./images/P3口述紀錄片.png')"></div>
+              <div class="slide" style="background-image:url('./images/p3背靠背講座.png')"></div>
+              <div class="slide" style="background-image:url('./images/p3背靠背易讀節目單_頁面_1.jpg')"></div>
+            </div>
+            <div class="arrow left">&lt;</div>
+            <div class="arrow right">&gt;</div>
+          </div>
+          <div class="proj-meta">
+            <h3>專案管理 Project Management</h3>
+            <p class="proj-text">統籌跨部門專案，場務整合與活動流程管理，確保專案按時上線與品質。
+
+              包含：節目演出、工作坊及導覽活動、出版製作等。</p>
+          </div>
+        </article>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <div class="contact-bg"></div>
+        <div class="contact-content wrap">
+          <h2>Contact</h2>
+          <p>洽談行銷設計、品牌策略或專案合作，歡迎來信聯繫</p>
+          <p style="font-size:1.2rem; margin-top:12px;">✉️ ycsun2023@gmail.com</p>
+        </div>
+      </section>
+
+      <footer>
+        <div class="wrap footer-grid">
+          <div class="footer-left">
+            <div class="logo small">SUN YI CHING</div>
+            <div style="font-size:0.85rem; margin-top:6px; color:#555">Designing strategies, delivering clarity.</div>
+          </div>
+          <div class="footer-center">
+            <div>© 2025 YC SUN All Rights Reserved</div>
+          </div>
+          <div class="footer-right">
+            <div class="footer-socials">
+              <a href="#" class="icon-link" aria-label="facebook"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
+                  <path d="M18 2h-3a4 4 0 0 0-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 0 1 1-1h3z" stroke-width="1.2" /></svg></a>
+              <a href="#" class="icon-link" aria-label="instagram"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
+                  <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke-width="1.2" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8" stroke-width="1.2" /></svg></a>
+              <a href="mailto:ycsun@gmail.com" class="icon-link" aria-label="mail"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor">
+                  <path d="M3 8l8.5 6L20 8" />
+                  <rect x="3" y="5" width="18" height="14" rx="2" ry="2" /></svg></a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lb-content">
+      <button class="lb-close" id="lbClose">×</button>
+      <div class="lb-image"><img id="lbImg" src="" alt=""></div>
+      <div class="lb-meta">
+        <h3 id="lbTitle" style="margin-top:0"></h3>
+        <p id="lbDesc" style="line-height:1.6; color:#555"></p>
+      </div>
+      <button class="lb-prev" id="lbPrev">&lt;</button>
+      <button class="lb-next" id="lbNext">&gt;</button>
+    </div>
+  </div>
+
+  <script>
+    /* 1. 平滑滾動 */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const headerOffset = 85;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+        }
+      });
+    });
+
+    /* 2. Accordion 邏輯 (單開模式) */
+    const accItems = document.querySelectorAll('.acc-item');
+    accItems.forEach(item => {
+      item.querySelector('.acc-top').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        accItems.forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    /* 3. Portfolio 切換與 Lightbox */
+    const thumbs = Array.from(document.querySelectorAll('.thumb'));
+    const mainImg = document.getElementById('mainImg');
+    const mainTitle = document.querySelector('#mainPreview .meta-title');
+    const mainDesc = document.querySelector('#mainPreview .meta-desc');
+
+    const galleryData = thumbs.map(t => ({
+      src: t.dataset.src,
+      title: t.dataset.title,
+      desc: t.dataset.desc
+    }));
+
+    thumbs.forEach((t, index) => {
+      t.addEventListener('click', () => {
+        const data = galleryData[index];
+        mainImg.src = data.src;
+        mainTitle.innerText = data.title;
+        mainDesc.innerText = data.desc;
+      });
+      t.addEventListener('dblclick', () => openLightbox(index));
+    });
+
+    const mainPreview = document.getElementById('mainPreview');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbTitle = document.getElementById('lbTitle');
+    const lbDesc = document.getElementById('lbDesc');
+    let currentLbIndex = 0;
+
+    mainPreview.addEventListener('click', () => {
+      const currentSrc = mainImg.src;
+      const idx = galleryData.findIndex(g => currentSrc.includes(g.src.replace('./', '')));
+      openLightbox(idx !== -1 ? idx : 0);
+    });
+
+    function openLightbox(index) {
+      currentLbIndex = index;
+      updateLightboxContent();
+      lightbox.classList.add('show');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('show');
+      lightbox.setAttribute('aria-hidden', 'true');
+    }
+
+    function updateLightboxContent() {
+      const data = galleryData[currentLbIndex];
+      lbImg.src = data.src;
+      lbTitle.innerText = data.title;
+      lbDesc.innerText = data.desc;
+    }
+
+    document.getElementById('lbClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.getElementById('lbPrev').addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentLbIndex = (currentLbIndex - 1 + galleryData.length) % galleryData.length;
+      updateLightboxContent();
+    });
+    document.getElementById('lbNext').addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentLbIndex = (currentLbIndex + 1) % galleryData.length;
+      updateLightboxContent();
+    });
+
+    /* 4. Carousel */
+    document.querySelectorAll('.carousel').forEach(car => {
+      const slides = car.querySelector('.slides');
+      const count = slides.children.length;
+      let idx = 0;
+
+      const leftBtn = car.querySelector('.arrow.left');
+      const rightBtn = car.querySelector('.arrow.right');
+
+      function updateSlide() {
+        slides.style.transform = `translateX(-${idx * 100}%)`;
+      }
+
+      leftBtn.addEventListener('click', () => {
+        idx = (idx - 1 + count) % count;
+        updateSlide();
+      });
+      rightBtn.addEventListener('click', () => {
+        idx = (idx + 1) % count;
+        updateSlide();
+      });
+    });
+  </script>
+</body>
+
+</html>
