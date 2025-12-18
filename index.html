@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YC SUN｜Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="wrap">
+    <!-- header -->
+    <header>
+      <div class="wrap header-inner">
+        <div class="left">
+          <div class="logo">SUN YI CHING</div>
+        </div>
+
+        <nav class="nav-area">
+          <a class="nav-link" href="#about">ABOUT</a>
+          <a class="nav-link" href="#portfolio">PORTFOLIO</a>
+          <a class="nav-link" href="#projects">PROJECTS</a>
+
+          <!-- icons (Facebook / IG / Mail) -->
+          <div class="socials">
+            <!-- Facebook SVG -->
+            <a href="#" aria-label="facebook" class="icon-link">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                <path d="M18 2h-3a4 4 0 0 0-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 0 1 1-1h3z" stroke-width="1.2" />
+              </svg>
+            </a>
+            <!-- Instagram SVG -->
+            <a href="#" aria-label="instagram" class="icon-link">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke-width="1.2" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8" stroke-width="1.2" />
+              </svg>
+            </a>
+            <!-- Mail SVG -->
+            <a href="mailto:ycsun@gmail.com" aria-label="mail" class="icon-link">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                <path d="M3 8l8.5 6L20 8" stroke-width="1.2" />
+                <rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke-width="1.2" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- hero首頁 -->
+    <main>
+      <section class="hero wrap" id="home">
+        <div class="hero-left">
+          <div class="avatar" id="avatar" style="background-image:url(./images/avator.jpg);"></div>
+          <div class="sub">Marketing & Design & Project Strategy</div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-title">策略 × 設計 × 行銷</div>
+
+          <!-- 使用者指定：把長句放在按鈕上方 -->
+          <p class="hero-lead">從概念到執行，結合創意與邏輯，打造有影響力的內容，讓每個設計與策略都直達目標。</p>
+
+          <div class="hero-slogan">
+            讓創意在細節中發光
+            <span class="underline"></span>
+            <span class="star s1"></span>
+            <span class="star s2"></span>
+            <span class="star s3"></span>
+          </div>
+
+          <div class="btns">
+            <a class="btn" href="#about">More About Me</a>
+            <a class="btn" href="#projects">View Project</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- focus / about (摺疊選單accordion) -->
+      <section id="about" class="section wrap">
+        <div class="focus-header">
+          <div style="text-align:center;margin-bottom:18px">
+            <h2>FOCUS ON</h2>
+            <p>Let's make ideas visible</p>
+          </div>
+        </div>
+
+        <div class="focus">
+          <div class="about-text">
+            <h3>擅長專案統籌、跨部門協作，結合行銷與視覺，落實策略執行</h3>
+          </div>
+
+          <!-- 摺疊選單 -->
+          <div class="accordion">
+            <!-- item 1 -->
+            <div class="acc-item" data-idx="0">
+              <div class="acc-top">
+                <div class="title">Strategy｜策略思維</div>
+                <div class="toggle">+</div>
+              </div>
+              <div class="acc-body">
+                <p>具專案管理背景，熟悉跨部門協作與資源整合，專注行銷策略與視覺呈現結合，創造有效溝通</p>
+              </div>
+            </div>
+
+            <!-- item 2 -->
+            <div class="acc-item" data-idx="1">
+              <div class="acc-top">
+                <div class="title">Design | 設計整合</div>
+                <div class="toggle">+</div>
+              </div>
+              <div class="acc-body">
+                <p>視覺傳達、出版設計與活動整合，將內容轉化為可視化成果。</p>
+              </div>
+            </div>
+
+            <!-- item 3 -->
+            <div class="acc-item" data-idx="2">
+              <div class="acc-top">
+                <div class="title">Brand Communication｜品牌溝通</div>
+                <div class="toggle">+</div>
+              </div>
+              <div class="acc-body">
+                <p>線上線下整合溝通、媒體協作與活動宣傳策略，建立長期品牌影響力。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- portfolio -->
+      <section id="portfolio" class="section wrap">
+        <div style="text-align:center;margin-bottom:18px">
+          <h2>Portfolio</h2>
+          <p class="portfolio-sub">整合策略與設計，讓行銷更有方向</p>
+        </div>
+
+        <div class="portfolio-grid">
+          <!-- main preview -->
+          <div class="portfolio-main" id="mainPreview">
+            <img id="mainImg" src="images/Poster 1.png" alt="main">
+            <div class="main-overlay">
+              <div class="meta">
+                <strong class="meta-title">海報設計 Poster Design</strong>
+                <div class="meta-desc">視覺敘事 × 行銷訊息設計</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- thumbs (總共 5 張圖：thumbs 含 4 個，第一張也會出現在 thumbs) -->
+          <div class="portfolio-thumbs" id="thumbs">
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/Poster 1.png" data-title="海報設計 Poster Design" data-desc="視覺敘事 × 行銷訊息設計">
+              <img src="images/Poster 1.png" alt="">
+              <div class="overlay">
+                <div>海報設計 Poster Design</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/Poster 2.png" data-title="海報設計 Poster Design" data-desc="視覺敘事 × 行銷訊息設計">
+              <img src="images/Poster 2.png" alt="">
+              <div class="overlay">
+                <div>海報設計 Poster Design</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/Poster 3.png" data-title="海報設計 Poster Design" data-desc="視覺敘事 × 行銷訊息設計">
+              <img src="images/Poster 3.png" alt="">
+              <div class="overlay">
+                <div>海報設計 Poster Design</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/Poster 4.jpg" data-title="海報設計 Poster Design" data-desc="視覺敘事 × 行銷訊息設計">
+              <img src="images/Poster 4.jpg" alt="">
+              <div class="overlay">
+                <div>海報設計 Poster Design</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/Poster 5.jpg" data-title="海報設計 Poster Design" data-desc="視覺敘事 × 行銷訊息設計">
+              <img src="images/Poster 5.jpg" alt="">
+              <div class="overlay">
+                <div>海報設計 Poster Design</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/Poster 10.jpg" data-title="海報設計 Poster Design"
+              data-desc="視覺敘事 × 行銷訊息設計">
+              <img src="images/Poster 10.jpg" alt="">
+              <div class="overlay">
+                <div>海報設計 Poster Design</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/IG 1.png" data-title="IG 社群版型 Social Media Templates"
+              data-desc="內容策略 × 品牌視覺一致性">
+              <img src="images/IG 1.png" alt="">
+              <div class="overlay">
+                <div>IG 社群版型 Social Media Templates</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/IG 1-1.png" data-title="IG 社群版型 Social Media Templates"
+              data-desc="內容策略 × 品牌視覺一致性">
+              <img src="images/IG 1-1.png" alt="">
+              <div class="overlay">
+                <div>IG 社群版型 Social Media Templates</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/IG 2.png" data-title="IG 社群版型 Social Media Templates"
+              data-desc="內容策略 × 品牌視覺一致性">
+              <img src="images/IG 2.png" alt="">
+              <div class="overlay">
+                <div>IG 社群版型 Social Media Templates</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/IG 2-2.png" data-title="IG 社群版型 Social Media Templates"
+              data-desc="內容策略 × 品牌視覺一致性">
+              <img src="images/IG 2-2.png" alt="">
+              <div class="overlay">
+                <div>IG 社群版型 Social Media Templates</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/AD 1.jpg" data-title="廣告投放視覺設計 Digital Marketing Strategy"
+              data-desc="內容策略 × 品牌視覺一致性">
+              <img src="images/AD 1.jpg" alt="">
+              <div class="overlay">
+                <div>廣告投放視覺設計 Digital Marketing Strategy</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/AD 2.jpg" data-title="廣告投放視覺設計 Digital Marketing Strategy"
+              data-desc="內容策略 × 品牌視覺一致性">
+              <img src="images/AD 2.jpg" alt="">
+              <div class="overlay">
+                <div>廣告投放視覺設計 Digital Marketing Strategy</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/YT 1.jpg" data-title="YouTube 縮圖設計 YouTube Thumbnails"
+              data-desc="影像內容協作協調 × 視覺層級與焦點處理">
+              <img src="images/YT 1.jpg" alt="">
+              <div class="overlay">
+                <div>YouTube 縮圖設計 YouTube Thumbnails</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/CIS 1.jpg" data-title="品牌識別 Brand Identity"
+              data-desc="品牌定位與精神 × Logo與識別系統設計">
+              <img src="images/CIS 1.jpg" alt="">
+              <div class="overlay">
+                <div>品牌識別 Brand Identity</div>
+              </div>
+            </div>
+            <!-- 專案  -->
+            <div class="thumb" data-src="images/CIS 2.jpg" data-title="品牌識別 Brand Identity"
+              data-desc="品牌定位與精神 × Logo與識別系統設計">
+              <img src="images/CIS 2.jpg" alt="">
+              <div class="overlay">
+                <div>品牌識別 Brand Identity</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- projects (圖文交錯含輪播) -->
+      <section id="projects" class="section wrap">
+        <div style="margin-bottom:18px">
+          <h2>PROJECTS</h2>
+          <p>透過多元專案經驗，探索從活動現場到品牌整合的各種可能。</p>
+          <p>這些作品反映我在策略思維、視覺設計與內容執行間的平衡。</p>
+        </div>
+
+        <!-- project 1 -->
+        <article class="project">
+          <div class="carousel" data-idx="0">
+            <div class="slides">
+              <div class="slide" style="background-image:url('images/p1.jpg')"></div>
+              <div class="slide" style="background-image:url('images/p1-2.jpg')"></div>
+              <div class="slide" style="background-image:url('images/P1-3.png')"></div>
+            </div>
+            <div class="arrow left">&lt;</div>
+            <div class="arrow right">&gt;</div>
+          </div>
+
+          <div class="proj-meta">
+            <h3>品牌行銷企劃 Brand & Marketing Projects</h3>
+            <p class="proj-text">品牌整合視覺與行銷素材製作，結合活動執行與 KOL
+              內容合作，強化觀眾互動與品牌識別度。<br><br>負責範圍：策略規劃、活動執行、媒體協作。<br><br>包含：國際講座、品牌合作、內容策畫、公關曝光<br></p>
+          </div>
+        </article>
+        <!-- project 2 (圖文互換位置) -->
+        <article class="project">
+          <div class="proj-meta">
+            <h3>跨平台內容整合 Content & Media Collaboration</h3>
+            <p class="proj-text">結合內容策劃與視覺設計，整合節目製作、行銷、視覺設計及公關執行。<br><br>包含：YouTuber 合作、媒體頻道合作</p>
+          </div>
+
+          <div class="carousel" data-idx="1">
+            <div class="slides">
+              <div class="slide" style="background-image:url('images/P2.png')"></div>
+              <div class="slide" style="background-image:url('images/P2-2.png')"></div>
+              <div class="slide" style="background-image:url('images/P2-3.png')"></div>
+            </div>
+            <div class="arrow left">&lt;</div>
+            <div class="arrow right">&gt;</div>
+          </div>
+        </article>
+        <!-- project 3 -->
+        <article class="project">
+          <div class="carousel" data-idx="0">
+            <div class="slides">
+              <div class="slide" style="background-image:url('images/P3.png')"></div>
+              <div class="slide" style="background-image:url('images/p3-1.jpg')"></div>
+              <div class="slide" style="background-image:url('images/p3-2.png')"></div>
+              <div class="slide" style="background-image:url('images/P3-3.jpeg')"></div>
+            </div>
+            <div class="arrow left">&lt;</div>
+            <div class="arrow right">&gt;</div>
+          </div>
+
+          <div class="proj-meta">
+            <h3>專案管理 Project Management & Stakeholder Coordination</h3>
+            <p class="proj-text">統籌跨部門專案，場務整合與活動流程管理，確保專案按時上線與品質。<br><br>包含：節目演出、工作坊及導覽活動、出版製作等。<br></p>
+          </div>
+        </article>
+      </section>
+
+      <!-- contact (最後一頁) -->
+      <section id="contact" class="section wrap contact-section">
+        <div class="contact-bg"></div>
+        <div class="contact-content">
+          <h2>Contact</h2>
+          <p>洽談行銷設計、品牌策略或專案合作，歡迎來信聯繫</p>
+          <p>✉️ ycsun2023@gmail.com</p>
+        </div>
+      </section>
+
+      <!-- footer -->
+      <footer>
+        <div class="wrap footer-grid">
+          <div class="footer-left">
+            <div class="logo small">SUN YI CHING</div>
+            <div class="slogan">Designing strategies, delivering clarity.</div>
+          </div>
+
+          <div class="footer-center">
+            <div>© 2025 YC SUN All Rights Reserved</div>
+          </div>
+
+          <div class="footer-right">
+            <!-- <div>© 2025 YC SUN All Rights Reserved</div> -->
+            <div class="footer-socials">
+              <a href="#" class="icon-link"> <!-- fb -->
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                  <path d="M18 2h-3a4 4 0 0 0-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 0 1 1-1h3z" stroke-width="1.2" />
+                </svg>
+              </a>
+              <a href="#" class="icon-link"> <!-- ig -->
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                  <rect x="3" y="3" width="18" height="18" rx="5" ry="5" stroke-width="1.2" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8" stroke-width="1.2" />
+                </svg>
+              </a>
+              <a href="mailto:ycsun@gmail.com" class="icon-link"> <!-- mail -->
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor">
+                  <path d="M3 8l8.5 6L20 8" stroke-width="1.2" />
+                  <rect x="3" y="5" width="18" height="14" rx="2" ry="2" stroke-width="1.2" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Lightbox modal -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lb-content">
+      <button class="lb-close" id="lbClose">×</button>
+      <div class="lb-image"><img id="lbImg" src="" alt=""></div>
+      <div class="lb-meta">
+        <h3 id="lbTitle"></h3>
+        <p id="lbDesc"></p>
+      </div>
+      <button class="lb-prev" id="lbPrev">&lt;</button>
+      <button class="lb-next" id="lbNext">&gt;</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
